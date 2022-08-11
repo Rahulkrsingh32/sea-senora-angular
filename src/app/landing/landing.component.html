@@ -1,0 +1,54 @@
+
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item bright active" style="background-image: url('https://images.unsplash.com/photo-1470645792662-dd18394f8c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80')">
+          <div class="carousel-caption">
+            <h5>Can get Vintage Boat</h5>
+            <p>Here you can also rent vintage theme Yatches!</p>
+          </div>
+        </div>
+        <div class="carousel-item bright" style="background-image: url('https://images.unsplash.com/photo-1474484103140-c573c0aad086?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80')">
+          <div class="carousel-caption">
+            <h5>Most affordable rental boat firm!</h5>
+            <p>We provide cheapest boat in the market.</p>
+          </div>
+        </div>
+        <div class="carousel-item bright" style="background-image: url('https://images.unsplash.com/photo-1645449441925-6092207be97d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1157&q=80')">
+          <div class="carousel-caption">
+            <h5>Come join our family</h5>
+            <p>join and get amazing offers and royalty points on your bookings.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  
+  
+  <div class="jumbotron fs-1 carousel-content">
+    
+    <h1>Welcome to SEA-SENORA,</h1>
+    <p class="fs-1">Best Place to Rent your Luxurious Boat!</p>
+    <p class="lead">Here you can rent all types of Boats. From affordable to Luxurious</p>
+
+    <hr class="my-4">
+      
+    <p>Just SignUp and Book your first Boat at 50% OFF!!</p>
+    
+    <a *ngIf="!loggedIn" role="button" [routerLink]="['/signup']" class="btn btn-success">Join now and Avail 50% OFF</a>
+    <a *ngIf="loggedIn" role="button" [routerLink]="['/dashboard']" class="btn btn-success">Go to Dashboard and Book</a>
+  </div>
+  
+ 

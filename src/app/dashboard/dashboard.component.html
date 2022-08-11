@@ -1,0 +1,23 @@
+<div class="row g-5 d-flex p-5 mt-5">
+    <div class="col-md-3" *ngFor="let boat of boats">
+        <div class='boat p-2 bs1'>
+            <img src={{boat.imageUrl}} class='mx-auto d-block carimg ' alt="img"/>
+            <div class='boat-content '>
+                <div class='' >
+                    <p>{{boat.boatName}}</p>
+                    <p>Rent Per Hour Rs.{{boat.ratePerDay}}/-</p>
+                    
+                    <a *ngIf="!isLoggedIn()" role="button" [routerLink]="['/login']" class="btn btn-warning">Login to Book</a>
+                    <a *ngIf="isLoggedIn()" role="button" [routerLink]="['/user',userId,'booking',boat.id]" class="btn btn-warning">Book</a>
+
+                </div>
+                
+                
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    

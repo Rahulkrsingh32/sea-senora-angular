@@ -1,0 +1,34 @@
+
+<br />
+<br />
+<br />
+<div class="container top">
+    <div class="row  ">
+        <div class="col-md-6">
+            <img src="{{ imageUrl }}" alt="boat" class="rounded float-start "  />
+        </div>
+        <div class="col-md-6">
+            
+            <hr class="bg-danger border-2 border-top border-danger"><p class="text-center" > BOAT INFORMATION </p><hr class="bg-danger border-2 border-top border-danger">
+            <p>Name : {{ boatName }}</p>
+            <p> Fuel Type : {{ fuelType }} </p>
+            <p> MaxPassengers Allowed : {{ maxPassengers }} </p>
+            <p> Rate Per Day : Rs.{{ ratePerDay }} </p>
+            <hr class="bg-danger border-2 border-top border-danger"><p class="text-center" > SELECT DATE </p><hr class="bg-danger border-2 border-top border-danger">
+            From : <input type="date" [(ngModel)]="fromDate" > To: <input type="date" [(ngModel)]="toDate" >
+            <br />
+            <button class="btn btn-primary mt-4" (click)="selectedDate()" >See total cost</button>
+            <br />
+            <br />
+            <div *ngIf="numberDays" >
+
+                <p>Total Number Of Days Selected : {{ numberDays }} </p>
+                <p> Cost per Day : Rs.{{ ratePerDay }} </p>
+                <p>Total Amount to be Paid : Rs.{{totalCost}} </p>
+                <button (click)="bookBoat()" class="btn btn-success mt-2" > Book by paying Rs.{{totalCost}} </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 

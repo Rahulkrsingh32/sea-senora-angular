@@ -1,0 +1,56 @@
+<div class="container " >
+    
+    <div class="container-fluid" style="margin-top:200px">
+        <div class="" style="margin-top:200px">
+            <div class="rounded d-flex justify-content-center">
+                <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+                    <div class="text-center">
+                        <h3 class="text-primary">Sign Up</h3>
+                    </div>
+                    
+                    <form #userForm="ngForm" (ngSubmit)="addUser(userForm.value)" >
+                        <div class="p-4">
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary"><i
+                                        class="bi bi-person-plus-fill text-white"></i></span>
+                                <input type="text" [class.is-invalid]="name.invalid && name.touched" #name="ngModel" required name="name" id="name" ngModel class="form-control" placeholder="Name">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary"><i class="bi bi-phone-fill text-white"></i></span>
+                                <input type="text" [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched" required #phoneNumber="ngModel" name="phoneNumber" id="phoneNumber" ngModel class="form-control" placeholder="PhoneNumber">
+                            </div>
+                            
+
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary"><i
+                                        class="bi bi-person-plus-fill text-white"></i></span>
+                                <input type="text" [class.is-invalid]="username.invalid && username.touched" required #username="ngModel" name="username" id="username" ngModel class="form-control" placeholder="Username">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary"><i class="bi bi-envelope-fill text-white"></i></span>
+                                <input type="email" [class.is-invalid]="emailId.invalid && emailId.touched" required #emailId="ngModel" name="emailId" id="emailId" ngModel class="form-control" placeholder="EmailId">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary"><i
+                                        class="bi bi-key-fill text-white"></i></span>
+                                <input type="password" [class.is-invalid]="password.invalid && password.touched" required #password="ngModel" name="password" id="password" ngModel class="form-control" placeholder="password">
+                            </div>
+
+                            
+                            <button [disabled]="userForm.form.invalid && userForm.form.touched" class="btn btn-primary text-center mt-2" >
+                                SignUp
+                            </button>
+                            <p class="text-center mt-5">Already have an account?
+                                <a [routerLink]="['/login']" class="text-decoration-none"><span class="text-primary">Login</span></a>
+                            </p>
+                            <p class="text-center text-primary">Forgot your password?</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

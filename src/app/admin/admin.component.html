@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="row g-5 p-5 mt-5 d-flex ">
+            <button [routerLink]="['/admin/add']" class="btn btn-primary text">+Add Boat</button>
+            <div class="col-md-6" *ngFor="let boat of boats">
+                <div class='boat p-2 bs1'>
+                    <img src={{boat.imageUrl}} class='mx-auto d-block carimg ' alt="img"/>
+                    <div class='boat-content '>
+                        <div class='' >
+                            <p>{{boat.boatName}}</p>
+                            <p>Rent Per Hour Rs.{{boat.ratePerDay}}/- </p>
+                            
+                            <a role="button" [routerLink]="['/admin',boat.id,'edit']" class="btn btn-warning">Edit Boat</a>
+                            <button role="button" [routerLink]="['/admin/delete',boat.id]" class="btn btn-danger m-3">Delete Boat</button>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        <router-outlet></router-outlet>
+    </div>
+</div>

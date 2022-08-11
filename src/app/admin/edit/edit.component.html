@@ -1,0 +1,28 @@
+<br />
+<br />
+<div class="row g-5 d-flex mt-5 p-5">
+    
+    <form #boatForm="ngForm" class="col-md-12" (ngSubmit)="editBoat(boatForm.value)" >
+        <div class="form-group mb-5">
+            <label for="boatName">BoatName</label>
+            <input [(ngModel)]="boatName" type="text" name="boatName" id="boatName" class="form-control">
+        </div>
+        <div class="form-group mb-5">
+            <label for="imageUrl">ImageUrl</label>
+            <input [(ngModel)]="imageUrl" type="text" name="imageUrl" id="imageUrl" class="form-control">
+        </div>
+        <div class="form-group mb-5">
+            <label for="fuelType">FuelType</label>
+            <input [(ngModel)]="fuelType" type="text" name="fuelType" id="fuelType" class="form-control">
+        </div>
+        <div class="form-group mb-5">
+            <label for="maxPassengers">MaxPassengers</label>
+            <input [(ngModel)]="maxPassengers" type="text" name="maxPassengers" id="maxPassengers" class="form-control">
+        </div>
+        <div class="form-group mb-5">
+            <label for="ratePerDay">RatePerDay</label>
+            <input [(ngModel)]="ratePerDay" type="text" name="ratePerDay" id="ratePerDay" class="form-control">
+        </div>
+        <button  class="btn btn-success ">Edit</button>
+    </form>
+</div>
