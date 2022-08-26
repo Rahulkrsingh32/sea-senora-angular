@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
   userId: string; 
   name: string; 
+  signOutDone: boolean = false;
 
   ngOnInit(): void {
     console.log(sessionStorage);
@@ -26,7 +27,13 @@ export class HeaderComponent implements OnInit {
   signOut(){
     sessionStorage.clear();
     console.log("After signout "+sessionStorage);
-    this.router.navigate(["/"])
+    this.signOutDone=true;
+    setTimeout(() => {
+      this.signOutDone=false;
+      this.router.navigate(["/"]);
+      
+    },2000);
+    
   }
 
   isAdmin():boolean {

@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   boats: BoatsModel[];
   loading: boolean = false;
   errorMessage;
+  p: number;
 
   constructor(private serverService:ServerService, private boatsService: BoatsService) { }
   userId: string = sessionStorage.getItem("customerId");

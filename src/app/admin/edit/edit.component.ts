@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AdminService } from 'src/app/admin.service';
 import { BoatsService } from 'src/app/boats.service';
 import { BoatsModel } from 'src/app/models/boats.model';
@@ -16,12 +16,15 @@ export class EditComponent implements OnInit {
   loading: boolean = false;
   errorMessage;
   boatName: string; 
+  newBoatName: string;
   imageUrl:string;
   fuelType:string;
   maxPassengers:number;
   ratePerDay:number;
+  edited: boolean = false;
+  
 
-  constructor(private activatedRoute: ActivatedRoute, private boatsService: BoatsService, private adminService:AdminService) { }
+  constructor(private activatedRoute: ActivatedRoute, private boatsService: BoatsService, private adminService:AdminService, private router: Router) { }
 
   public getBoatById(id: number) {
     this.loading = true;
@@ -66,7 +69,15 @@ export class EditComponent implements OnInit {
     })
     this.adminService.updateBoats(this.id, data).subscribe((result) => {
       console.log(result);
-      window.location.reload();
+      
+      this.edited=true;
+      setTimeout(() => {
+        this.edited=false;
+        
+        window.location.reload();
+        
+      }, 2000);
+      
     })
     
   }

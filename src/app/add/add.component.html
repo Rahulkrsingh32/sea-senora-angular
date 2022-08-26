@@ -3,29 +3,32 @@
 
     </div>
     <div class="col-md-6">
+        <div *ngIf="boatAdded" class="alert alert-success" role="alert">
+            New Boat added to Inventory.
+        </div>
 
         <form #boatForm="ngForm" class="col-md-12" (ngSubmit)="addBoat(boatForm.value)" >
             <div class="form-group mb-5">
                 <label for="boatName">BoatName</label>
-                <input ngModel type="text" name="boatName" id="boatName" class="form-control">
+                <input ngModel [class.is-invalid]="boatName.invalid && boatName.touched" ngModel #boatName="ngModel" required type="text" name="boatName" id="boatName" class="form-control">
             </div>
             <div class="form-group mb-5">
                 <label for="imageUrl">ImageUrl</label>
-                <input ngModel type="text" name="imageUrl" id="imageUrl" class="form-control">
+                <input ngModel [class.is-invalid]="imageUrl.invalid && imageUrl.touched" ngModel #imageUrl="ngModel" required type="text" name="imageUrl" id="imageUrl" class="form-control">
             </div>
             <div class="form-group mb-5">
                 <label for="fuelType">FuelType</label>
-                <input ngModel type="text" name="fuelType" id="fuelType" class="form-control">
+                <input ngModel [class.is-invalid]="fuelType.invalid && fuelType.touched" ngModel #fuelType="ngModel" required type="text" name="fuelType" id="fuelType" class="form-control">
             </div>
             <div class="form-group mb-5">
                 <label for="maxPassengers">MaxPassengers</label>
-                <input ngModel type="text" name="maxPassengers" id="maxPassengers" class="form-control">
+                <input ngModel [class.is-invalid]="maxPassengers.invalid && maxPassengers.touched" ngModel #maxPassengers="ngModel" required type="text" name="maxPassengers" id="maxPassengers" class="form-control">
             </div>
             <div class="form-group mb-5">
                 <label for="ratePerDay">RatePerDay</label>
-                <input ngModel type="text" name="ratePerDay" id="ratePerDay" class="form-control">
+                <input ngModel [class.is-invalid]="ratePerDay.invalid && ratePerDay.touched" ngModel #ratePerDay="ngModel" required type="text" name="ratePerDay" id="ratePerDay" class="form-control">
             </div>
-            <button  class="btn btn-success ">Add Boat to Inventory</button>
+            <button [disabled]="boatForm.form.invalid && boatForm.form.touched"  class="btn btn-success ">Add Boat to Inventory</button>
         </form>
     </div>
     <div class="col-md-3">

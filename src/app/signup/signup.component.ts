@@ -12,15 +12,34 @@ export class SignupComponent implements OnInit {
 
   successMessage:string ="";
   errorMessage:string="";
+  signUpsuccess: boolean = false;
+  userExist: boolean = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log("signup")
+    console.log("signup");
+    this.signUpsuccess=false;
+
+  }
+
+  setSignUpSuccess(){
+    this.signUpsuccess=true;
   }
 
   navigateToLogin(){
-    this.router.navigate(['/login']);
+    this.setSignUpSuccess();
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 2000);
+    
+  }
+
+  reloadSignup(){
+    this.userExist=true;
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   }
 
   addUser(data: any){
@@ -36,12 +55,14 @@ export class SignupComponent implements OnInit {
     
     this.userService.signUp(sendData).subscribe((result) => {
       console.log("user added");
-      if(result["statusCode"] >= 400 && result["ststusCode"]<=499) {
+      if(result["statusCode"] >= 400 && result["statusCode"]<=499) {
         this.errorMessage = result["errorMessage"] + " Please Login";
+        this.reloadSignup();
       } else {
         this.successMessage = "Registration Successfull";
+        this.navigateToLogin();
       } 
-      this.navigateToLogin();
+      
     },(error) => {
       console.log(error);
       this.errorMessage = "Something went wrong please try again!"

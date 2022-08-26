@@ -23,6 +23,8 @@ import { BookingsComponent } from './bookings/bookings.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { BookingService } from './booking.service';
 import {DatePipe} from '@angular/common';
+import { CustomerComponent } from './customer/customer.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -41,13 +43,15 @@ import {DatePipe} from '@angular/common';
     AddComponent,
     DeleteComponent,
     BookingsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    CustomerComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule 
+    HttpClientModule,
+    NgxPaginationModule 
     
   ],
   providers: [ServerService, BoatsService, AdminService, UserService, BookingService, DatePipe],

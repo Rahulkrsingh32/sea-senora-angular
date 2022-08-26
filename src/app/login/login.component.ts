@@ -16,11 +16,21 @@ export class LoginComponent implements OnInit {
   password: string = "";
   isLoggedOut: boolean= false;
   errorMessage: string = "";
+  loginTrue: boolean = false;
+  loginError: boolean = false;
+
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((active) => {
-      //this.isLoggedOut = Boolean(active.isLoggedOut);
-    })
+    
+    console.log("login");
+  }
+
+  setLoginSuccess(){
+    this.loginTrue = true;
+  }
+
+  setLoginError(value: boolean){
+    this.loginError=value;
   }
 
   signin(data: any){
@@ -32,6 +42,12 @@ export class LoginComponent implements OnInit {
     this.userService.signIn(sendData).subscribe((res) => {
       if(res["statusCode"] >= 400 && res["statusCode"] <= 499) {
         this.errorMessage = res["errorMessage"];
+        this.setLoginError(true);
+        setTimeout(() => {
+          this.setLoginError(false);
+          window.location.reload();
+        }, 2000);
+
       } else {
         sessionStorage.setItem('username',sendData.username);
         sessionStorage.setItem('token', 'HTTP_TOKEN' + res.token);
@@ -39,47 +55,26 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('customerId', res.customerID);
         if(sessionStorage.getItem("roles") === "ADMIN") {
           sessionStorage.setItem("isAdminLoggedIn", "true");
-          this.router.navigate(["admin"]);
+          this.setLoginSuccess();
+          setTimeout(() => {
+            this.router.navigate(["admin"]);
+          }, 2000);
+          
         } else if (sessionStorage.getItem("roles") === "USER") {
           sessionStorage.setItem("isUserLoggedIn", "true");
-          this.router.navigate(["dashboard"])
+          this.setLoginSuccess();
+          setTimeout(() => {
+            this.router.navigate(["dashboard"]);
+          }, 3000);
+          
         }
       }
     }, (error) => {
       this.errorMessage = "Something went wrong."
+      console.log(error);
     })
   }
 
-  // signin() {
 
-  // }
-
-  // addUser(data: any){
-  //   const sendData: Customer = {
-  //     name : data.name,
-  //     emailId: data.emailId,
-  //     phoneNumber: data.phoneNumber,
-  //     username: data.username,
-  //     password: data.password,
-  //     roles : ["USER"]
-  //   }
-    
-  //   let body = JSON.stringify(sendData); 
-    
-  //   this.userService.signUp(sendData).subscribe((result) => {
-  //     console.log("user added");
-  //     if(result["statusCode"] >= 400 && result["ststusCode"]<=499) {
-  //       this.errorMessage = result["errorMessage"] + " Please Login";
-  //     } else {
-  //       this.successMessage = "Registration Successfull";
-  //     } 
-  //     this.navigateToLogin();
-  //   },(error) => {
-  //     console.log(error);
-  //     this.errorMessage = "Something went wrong please try again!"
-  //   });
-
-
-  // }
 
 }

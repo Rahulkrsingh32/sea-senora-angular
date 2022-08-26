@@ -1,7 +1,9 @@
 <br />
 <br />
 <div class="row g-5 d-flex mt-5 p-5">
-    
+    <div *ngIf="edited" class="alert alert-success" role="alert">
+        Boat with ID : {{ id }} Edited!!
+    </div>
     <form #boatForm="ngForm" class="col-md-12" (ngSubmit)="editBoat(boatForm.value)" >
         <div class="form-group mb-5">
             <label for="boatName">BoatName</label>

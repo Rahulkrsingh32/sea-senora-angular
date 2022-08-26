@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
   boats: BoatsModel[];
   loading: boolean = false;
   errorMessage;
+  p: number;
 
   constructor(private boatsService: BoatsService, private routerService:Router,
     private activatedRoute:ActivatedRoute) { }

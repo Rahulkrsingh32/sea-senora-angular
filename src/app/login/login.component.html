@@ -1,7 +1,13 @@
 
-<div class="container">
-    <div class="container-fluid" style="margin-top:200px">
-        <div class="" style="margin-top:200px">
+<div class="container top">
+    <div class="alert alert-success" *ngIf="loginTrue" role="alert">
+        LoggedIn Successfully!
+    </div>
+    <div class="alert alert-danger" *ngIf="loginError" role="alert">
+        Error while Logging! Please enter correct credentials.
+    </div>
+    <div class="container-fluid">
+        <div class="" style="margin-top:25px">
             <div class="rounded d-flex justify-content-center">
                 <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
                     <div class="text-center">

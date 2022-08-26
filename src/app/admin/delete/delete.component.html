@@ -9,6 +9,9 @@
 <br />
 <br />
 <div class="container">
+    <div *ngIf="deleted" class="alert alert-success" role="alert">
+       {{ boatName }} with id : {{ id }} Deleted Successfully!
+    </div>
     <div class="row g-5 d-flex mt-5 p-5">
         <div class="col-md-2"></div>
         <div class="col-md-8">

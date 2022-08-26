@@ -20,6 +20,7 @@ export class DeleteComponent implements OnInit {
   fuelType:string;
   maxPassengers:number;
   ratePerDay:number;
+  deleted: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, private boatsService: BoatsService, private adminService:AdminService, private router:Router) { }
 
@@ -56,9 +57,13 @@ export class DeleteComponent implements OnInit {
       this.id=id;
   })
     console.log("delete id"+this.id)
-    this.adminService.deleteBoat(this.id).subscribe((result) => {
-
-      this.router.navigate(['/admin']);
+    this.adminService.deleteBoat(this.id).subscribe(() => {
+      this.deleted=true;
+      setTimeout(() => {
+        this.deleted=false;
+        this.router.navigate(['/admin']);
+      }, 2000);
+      
     });
   }
   

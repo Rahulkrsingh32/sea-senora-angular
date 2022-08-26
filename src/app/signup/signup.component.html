@@ -1,7 +1,16 @@
-<div class="container " >
+<div class="container top" >
     
-    <div class="container-fluid" style="margin-top:200px">
-        <div class="" style="margin-top:200px">
+
+    <div class="alert alert-success" *ngIf="signUpsuccess" role="alert">
+        Congratulations!! You've Registered Successfully!!
+    </div>
+    <div class="alert alert-danger" *ngIf="userExist" role="alert">
+        Username already exists!!! Please try again.
+    </div>
+    
+    
+    <div class="container-fluid">
+        <div class="" style="margin-top:25px">
             <div class="rounded d-flex justify-content-center">
                 <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
                     <div class="text-center">
@@ -12,8 +21,7 @@
                         <div class="p-4">
 
                             <div class="input-group mb-3">
-                                <span class="input-group-text bg-primary"><i
-                                        class="bi bi-person-plus-fill text-white"></i></span>
+                                <span class="input-group-text bg-primary"><i class="bi bi-person-plus-fill text-white"></i></span>
                                 <input type="text" [class.is-invalid]="name.invalid && name.touched" #name="ngModel" required name="name" id="name" ngModel class="form-control" placeholder="Name">
                             </div>
                             <div class="input-group mb-3">

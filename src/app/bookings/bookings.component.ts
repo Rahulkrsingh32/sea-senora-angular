@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Params, Router } from '@angular/router';
 import { BoatsService } from '../boats.service';
 import { BookingService } from '../booking.service';
+import { CheckoutComponent } from '../checkout/checkout.component';
 import { BoatsModel } from '../models/boats.model';
 import { BookingRequestModel } from '../models/bookingRequest.model';
 
@@ -31,8 +32,12 @@ export class BookingsComponent implements OnInit {
   boatId: number;
   userId: number;
   bookingsDate: Date;
+  cancelNotification: boolean = false;
+  cancelBookingNumber: number = 0;
+  p: number;
+  numberOfDays: number;
   
-  constructor( private bookingService: BookingService, private activatedRoute: ActivatedRoute, private boatsService: BoatsService, private router: Router, private datePipe: DatePipe ) { }
+  constructor(private bookingService: BookingService, private activatedRoute: ActivatedRoute, private boatsService: BoatsService, private router: Router, private datePipe: DatePipe ) { }
 
 
   
@@ -60,17 +65,28 @@ export class BookingsComponent implements OnInit {
         
   }
 
- 
+  
+
+  cancelBookingDone(value: boolean){
+    this.cancelNotification = value;
+  }
 
   cancelBooking(id : number){
     console.log("Cancelllll bookingggg")
     this.bookingService.cancelBooking(id).subscribe((res) => {
       console.log(res);
-      window.location.reload();
+      this.cancelBookingNumber=id;
+      
+      this.cancelBookingDone(true);
+      setTimeout(() => {
+        this.cancelBookingDone(false);
+        window.location.reload();
+      },2000);
     });
   }
 
   getBookings(id : number){
+    
     this.loading = true;
     this.errorMessage = "";
     this.bookingService.getBoatForUser(id)
@@ -78,8 +94,6 @@ export class BookingsComponent implements OnInit {
         (response) => {                           //next() callback
           console.log('response received')
           this.bookings = response; 
-          
-          
           console.log(this.bookings);
         },
         (error) => {                              //error() callback
@@ -90,6 +104,7 @@ export class BookingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.activatedRoute.params.subscribe((params:Params) => {
       let id=+params['id'];
       this.getBookings(id);

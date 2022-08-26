@@ -1,0 +1,51 @@
+
+<br />
+<br />
+<br />
+<div class="tab-pane fade show active m-5 p-5" id="users">
+    <div *ngIf="customerDeleted" class="alert alert-success" role="alert">
+        Customer Deleted!! with ID : {{ deleteCustomerNumber }}
+    </div>
+  
+    <table class="table table-hover">
+      <thead class="table-borderless">
+        <tr class="text-center">
+          <th>ID</th>
+          <th>Name</th>
+          <th>PhoneNo.</th>
+          <th>UserName</th>
+          <th>EmailId</th>
+          <th> Action </th>
+          
+          
+        </tr>
+      </thead>
+      <tbody *ngFor="let customer of customers | paginate: { itemsPerPage: 10, currentPage: p }">
+        <tr class="text-center">
+          
+          <td>{{ customer.id }}</td>
+          <td> {{ customer.name }} </td>
+          <td> {{ customer.phoneNumber }} </td>
+          <td> {{ customer.username }} </td>
+          <td> {{ customer.emailId }} </td>
+          <td> <button (click)="deleteCustomer( customer.id )" class="btn btn-danger" >Delete User {{ customer.id }} </button> </td>
+          
+          
+          
+          
+        </tr>
+
+      </tbody>
+      
+    </table>
+    <br />
+    
+    <div class="d-flex justify-content-center">
+        <div class="d-flex align-content-end flex-wrap">
+    
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    
+    </div>
+</div>
+  

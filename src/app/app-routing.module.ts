@@ -6,6 +6,7 @@ import { DeleteComponent } from './admin/delete/delete.component';
 import { EditComponent } from './admin/edit/edit.component';
 import { BookingsComponent } from './bookings/bookings.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { CustomerComponent } from './customer/customer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path:'dashboard', component:DashboardComponent },
   { path:'profile', component:ProfileComponent },
   { path:'user/:id/booking/:bid', component: CheckoutComponent },
+  { path:'customers', component: CustomerComponent },
   { path:'admin', component: AdminComponent, children:[
       { path:':id/edit', component: EditComponent },
       { path:':id/edit/delete', component: DeleteComponent }

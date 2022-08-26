@@ -9,6 +9,8 @@ import { AdminService } from '../admin.service';
 })
 export class AddComponent implements OnInit {
 
+  boatAdded: boolean = false;
+
   constructor(private activatedRoute: ActivatedRoute, private adminService:AdminService, private router:Router) { }
 
   ngOnInit(): void {
@@ -18,7 +20,12 @@ export class AddComponent implements OnInit {
   addBoat(data: any){
     this.adminService.addBoat(data).subscribe(() => {
       console.log('boat added!!');
-      this.router.navigate(['/admin']);
+      this.boatAdded=true;
+      setTimeout(() => {
+        this.boatAdded=false;
+        this.router.navigate(['/admin']);
+      }, 2000);
+      
 
     })
   }

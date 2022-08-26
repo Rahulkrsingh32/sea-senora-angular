@@ -28,6 +28,7 @@ export class CheckoutComponent implements OnInit {
   boatId: number;
   userId: number;
   bookingsDate: Date;
+  bookingDone: boolean = false;
 
   constructor(private boatsService: BoatsService, private activatedRoute: ActivatedRoute, private bookingService: BookingService, private router: Router) { }
 
@@ -70,13 +71,7 @@ export class CheckoutComponent implements OnInit {
     this.numberDays = this.countDays(this.fromDate, this.toDate);
     console.log("number of days"+this.numberDays);
     this.totalCost = this.ratePerDay * this.numberDays;
-    const sendData : BookingsModel = {
-      
-      bookingDate : this.bookingsDate,
-      bookedFromDate : this.fromDate,
-      bookedToDate : this.toDate,
-      boatId : this.boatId
-    }
+    
     
   }
 
@@ -101,9 +96,13 @@ export class CheckoutComponent implements OnInit {
       boatId : this.boatId
     }
     
-    this.bookingService.addBoat(sendData,this.userId, this.boatId).subscribe((res) => {
+    this.bookingService.addBoat(sendData,this.userId, this.boatId).subscribe(() => {
       console.log("BookingDone!!");
-      this.router.navigate(['/user/bookings',this.userId]);
+      this.bookingDone=true;
+      setTimeout(() => {
+        this.router.navigate(['/user/bookings',this.userId]);
+      },2000)
+      
     })
 
   }

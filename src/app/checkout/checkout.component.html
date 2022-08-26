@@ -3,6 +3,9 @@
 <br />
 <br />
 <div class="container top">
+    <div class="alert alert-success" *ngIf="bookingDone" role="alert">
+        Congratulations Your Booking has been done!!!
+    </div>
     <div class="row  ">
         <div class="col-md-6">
             <img src="{{ imageUrl }}" alt="boat" class="rounded float-start "  />
